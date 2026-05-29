@@ -1,0 +1,343 @@
+.heroContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-midnight);
+}
+
+/* Ambient duplicate background video */
+.backgroundVideoContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0; /* Animated on load */
+  transform: scale(1.05);
+  transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.backgroundVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(48px) brightness(0.2) contrast(1.15) saturate(0.85);
+}
+
+.backgroundVideoVisible {
+  opacity: 0.35;
+}
+
+/* Dark cinematic overlays */
+.overlayMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: 
+    linear-gradient(180deg, rgba(7, 17, 31, 0.4) 0%, rgba(7, 17, 31, 0.85) 100%),
+    radial-gradient(circle at 75% 50%, rgba(59, 130, 246, 0.08) 0%, rgba(7, 17, 31, 0.95) 100%);
+  transition: opacity 0.3s ease; /* smoothly transitions scroll-based opacity */
+}
+
+.vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(circle at center, transparent 30%, rgba(7, 17, 31, 0.8) 100%);
+}
+
+/* Primary layout container overlays */
+.contentOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  padding: 0 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroSplitWrapper {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 36px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease; /* smooth scroll transitions */
+}
+
+.rightVideoSide {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative; /* Anchor for floating chips */
+}
+
+/* Vertical rounded-corner video card */
+.videoCardWrapper {
+  width: 100%;
+  max-width: 480px; 
+  aspect-ratio: 0.85 / 1; 
+  border-radius: 28px;
+  background: rgba(11, 30, 53, 0.35);
+  border: 1px solid rgba(125, 211, 252, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 8px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.85), 
+    0 0 45px rgba(59, 130, 246, 0.15),
+    inset 0 0 20px rgba(96, 165, 250, 0.1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0; /* Animated on load */
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); /* scroll-linked transform scale */
+}
+
+.videoCardVisible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.fgVideoCard {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #000;
+  display: block;
+}
+
+/* Direct absolute controls inside the video card */
+.videoCardControls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 30;
+}
+
+.cardControlButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 17, 31, 0.65);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  backdrop-filter: blur(8px);
+  color: var(--color-frost-white);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.cardControlButton:hover {
+  transform: scale(1.08);
+  border-color: var(--color-blue-glow);
+  color: var(--color-cyan-accent);
+}
+
+.cardControlButton svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Sound badge */
+.soundBadge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(7, 17, 31, 0.65);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: var(--color-cyan-accent);
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  z-index: 30;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: badgeBreathing 2s infinite ease-in-out;
+  transition: opacity 0.8s ease;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-blue-glow);
+  box-shadow: 0 0 8px var(--color-blue-glow);
+}
+
+@keyframes badgeBreathing {
+  0% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+  100% { opacity: 0.85; transform: scale(1); }
+}
+
+/* 4. PREMIUM FLOATING METADATA CHIPS SYSTEM */
+.floatingChip {
+  position: absolute;
+  background: rgba(11, 30, 53, 0.45);
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-cyan-accent);
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 30px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4), 
+    inset 0 0 8px rgba(96, 165, 250, 0.1),
+    0 0 15px rgba(59, 130, 246, 0.08);
+  pointer-events: none;
+  z-index: 24; /* hovers softly behind foreground card, in front of WebGL canvas */
+  opacity: 0; /* animated on loaded */
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chipVisible {
+  opacity: 0.48; /* soft blend-in resting opacity for cinematic integration */
+}
+
+/* Specific floating offsets around the vertical card */
+.chip1 { top: 12%; left: -15%; }
+.chip2 { top: 38%; right: -10%; }
+.chip3 { bottom: 22%; left: -18%; }
+.chip4 { bottom: 6%; right: -12%; }
+.chip5 { top: -6%; left: 15%; }
+.chip6 { bottom: -12%; left: 24%; }
+
+/* Bottom scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.3s ease;
+}
+
+.scrollIndicator:hover {
+  transform: translate(-50%, -2px);
+}
+
+.scrollText {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted-gray);
+  transition: color 0.3s ease;
+}
+
+.scrollIndicator:hover .scrollText {
+  color: var(--color-cyan-accent);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 32px;
+  background: rgba(125, 211, 252, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollPulseLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to bottom, var(--color-blue-glow), transparent);
+  animation: lineDrift 1.8s infinite linear;
+}
+
+@keyframes lineDrift {
+  0% { top: -10px; }
+  100% { top: 32px; }
+}
+
+/* Responsive scaling & mobile optimizations */
+@media (max-width: 1024px) {
+  .heroContainer {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+  
+  .contentOverlay {
+    position: static;
+    height: auto;
+    padding: 0 24px;
+  }
+  
+  .heroSplitWrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  
+  .rightVideoSide {
+    justify-content: center;
+  }
+  
+  .videoCardWrapper {
+    aspect-ratio: 16 / 9; /* crop horizontal on mobile */
+    max-width: 100%;
+  }
+  
+  .scrollIndicator {
+    display: none;
+  }
+  
+  /* Disable expensive blurs and hide floating elements entirely on mobile viewports for 60 FPS */
+  .floatingChip {
+    display: none !important;
+  }
+}

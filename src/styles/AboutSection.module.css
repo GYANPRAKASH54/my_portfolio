@@ -1,0 +1,209 @@
+.aboutSection {
+  position: relative;
+  width: 100%;
+  background: var(--color-midnight);
+  padding: 120px 8%;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 64px;
+}
+
+.leftColumn {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Typography styles */
+.sectionLabel {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-blue-glow);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-frost-white);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.headingHighlight {
+  background: linear-gradient(to right, var(--color-blue-glow), var(--color-cyan-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(125, 211, 252, 0.15);
+}
+
+.descriptionParagraph {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-muted-gray);
+  margin-bottom: 20px;
+}
+
+.descriptionParagraph strong {
+  color: var(--color-frost-white);
+  font-weight: 600;
+}
+
+/* Stats Cards Styling */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.statCard {
+  background: rgba(11, 30, 53, 0.35);
+  border: 1px solid rgba(125, 211, 252, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(7, 17, 31, 0.3);
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+.statNumber {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-cyan-accent);
+  margin-bottom: 4px;
+  text-shadow: 0 0 10px rgba(125, 211, 252, 0.3);
+}
+
+.statLabel {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-muted-gray);
+}
+
+/* Technical Arsenal Drawer */
+.arsenalCard {
+  background: rgba(11, 30, 53, 0.4);
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  backdrop-filter: var(--glass-blur);
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+}
+
+.arsenalTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-frost-white);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.1);
+  padding-bottom: 12px;
+}
+
+.skillCategory {
+  margin-bottom: 20px;
+}
+
+.skillCategory:last-child {
+  margin-bottom: 0;
+}
+
+.categoryName {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-blue-glow);
+  margin-bottom: 10px;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillPill {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(7, 17, 31, 0.45);
+  border: 1px solid rgba(125, 211, 252, 0.08);
+  color: var(--color-frost-white);
+  transition: all 0.3s ease;
+}
+
+.skillPill:hover {
+  background: rgba(11, 30, 53, 0.8);
+  border-color: rgba(96, 165, 250, 0.4);
+  color: var(--color-cyan-accent);
+  transform: translateY(-1px);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .aboutSection {
+    padding: 80px 24px;
+  }
+  
+  .container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .heading {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .arsenalCard {
+    padding: 20px;
+  }
+}

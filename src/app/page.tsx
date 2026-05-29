@@ -1,66 +1,63 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import Navbar from "@/components/Navbar/Navbar";
+import VideoIntro from "@/components/VideoIntro/VideoIntro";
+import CinematicLayer from "@/components/CinematicLayer/CinematicLayer";
+import HeroContent from "@/components/HeroContent/HeroContent";
+
+import AboutSection from "@/components/AboutSection/AboutSection";
+import ServicesSection from "@/components/ServicesSection/ServicesSection";
+import ProjectsSection from "@/components/ProjectsSection/ProjectsSection";
+import JourneySection from "@/components/JourneySection/JourneySection";
+import CredentialsSection from "@/components/CredentialsSection/CredentialsSection";
+import ContactSection from "@/components/ContactSection/ContactSection";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main style={{ position: "relative", width: "100%", overflowX: "hidden" }} id="portfolio-main-viewport">
+      {/* Floating Sticky Glass Navigation Header */}
+      <Navbar />
+
+      {/* ============================================================
+          SECTION 1: FULLSCREEN CINEMATIC HERO SECTION
+          ============================================================ */}
+      <section 
+        style={{ 
+          position: "relative", 
+          width: "100vw", 
+          height: "100vh", 
+          overflow: "hidden" 
+        }} 
+        id="hero-cinematic-section"
+      >
+        {/* Double-layered synchronized video backgrounds with integrated split layouts */}
+        <VideoIntro />
+
+        {/* Transparent Three.js WebGL Particle System Overlay */}
+        <CinematicLayer />
+      </section>
+
+      {/* ============================================================
+          PROGRESSIVE PORTFOLIO SECTION STACK
+          ============================================================ */}
+      
+      {/* SECTION 2: BIOGRAPHY & TECHNICAL SKILLS */}
+      <AboutSection />
+
+      {/* SECTION 3: SERVICES EXPERTISE */}
+      <ServicesSection />
+
+      {/* SECTION 4: FEATURED ALTERNATING PROJECTS */}
+      <ProjectsSection />
+
+      {/* SECTION 5: INTERNSHIP JOURNEY TIMELINE */}
+      <JourneySection />
+
+      {/* SECTION 6: ACADEMIC PATH & INDUSTRY CERTIFICATIONS */}
+      <CredentialsSection />
+
+      {/* SECTION 7: DIRECT CONNECTION & MESSAGING FORM */}
+      <ContactSection />
+    </main>
   );
 }

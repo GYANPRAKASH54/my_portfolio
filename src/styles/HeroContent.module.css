@@ -1,0 +1,129 @@
+.heroOverlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  pointer-events: none;
+}
+
+.heroOverlay * {
+  pointer-events: auto;
+}
+
+/* Tagline with spaced dots matching the screenshot */
+.tagline {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-blue-glow);
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+  display: inline-block;
+  opacity: 0; /* Animated */
+  transform: translateY(20px);
+}
+
+/* Giant display heading exactly styled like screenshot */
+.headingWrapper {
+  margin-bottom: 24px;
+  opacity: 0; /* Animated */
+  transform: translateY(25px);
+}
+
+.mainTitleAccent {
+  font-family: var(--font-display);
+  font-size: 6.0rem;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: 0.05em; /* blocky layout spacing */
+  text-transform: uppercase;
+  color: var(--color-frost-white);
+  background: linear-gradient(to right, var(--color-frost-white) 40%, var(--color-blue-glow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-muted-gray);
+  max-width: 600px;
+  margin-bottom: 14px;
+  opacity: 0; /* Animated */
+  transform: translateY(20px);
+}
+
+.subtitleLast {
+  margin-bottom: 28px;
+}
+
+/* Tech pills grid matching the capsules below description in screenshot */
+.techPillsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  max-width: 540px;
+  opacity: 0; /* Animated */
+  transform: translateY(20px);
+}
+
+.techPill {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(11, 30, 53, 0.4);
+  border: 1px solid rgba(125, 211, 252, 0.1);
+  color: var(--color-muted-gray);
+  transition: all 0.3s ease;
+}
+
+.techPill:hover {
+  border-color: var(--color-blue-glow);
+  color: var(--color-cyan-accent);
+  background: rgba(11, 30, 53, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .mainTitleAccent {
+    font-size: 4.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainTitleAccent {
+    font-size: 3.6rem;
+    letter-spacing: 0.02em;
+  }
+  
+  .tagline {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+  }
+  
+  .subtitle {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .techPillsWrapper {
+    gap: 6px 8px;
+  }
+  
+  .techPill {
+    font-size: 0.65rem;
+    padding: 5px 12px;
+  }
+}
