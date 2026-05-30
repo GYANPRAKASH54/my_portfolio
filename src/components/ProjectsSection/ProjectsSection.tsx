@@ -54,7 +54,6 @@ const PROJECTS_DATA: ProjectItem[] = [
     title: "HENNGE Backend Engineering Challenge",
     description: "Successfully implemented recursive engineering algorithms and authenticated API operations for the HENNGE backend challenge. Developed an RFC6238 compliant 10-digit TOTP generator using SHA-512 cryptographic hashing. Performed secured API requests with HTTP Basic Access Authentication and GitHub Secret Gist configurations.",
     badges: ["Python", "RFC6238", "TOTP Auth", "SHA-512", "Basic Auth", "Gist API"],
-    codeLink: "https://github.com/GYANPRAKASH54",
     mockupHeader: "hennge-challenge.py",
     mockupElement: (
       <div style={{ fontFamily: "monospace", fontSize: "0.65rem", color: "#94A3B8", display: "flex", flexDirection: "column", gap: "8px", width: "100%" }}>
@@ -75,7 +74,7 @@ const PROJECTS_DATA: ProjectItem[] = [
     title: "Intelligent Legal Document System",
     description: "Architected an AI-powered legal document management and index platform using Python, React, and MongoDB. Structured high-speed secure document uploads and dynamic metadata indexing, allowing lawyers to trigger intelligent doc queries instantly. Implemented robust role-based access control systems ensuring document privacy.",
     badges: ["Python", "React.js", "PostgreSQL", "MongoDB", "REST APIs", "AI Search"],
-    codeLink: "https://github.com/GYANPRAKASH54",
+    codeLink: "https://github.com/GYANPRAKASH54/Smart_Legal_dm",
     mockupHeader: "intelligent-legal-search-db",
     mockupElement: (
       <div style={{ display: "flex", flexDirection: "column", gap: "8px", width: "100%" }}>
