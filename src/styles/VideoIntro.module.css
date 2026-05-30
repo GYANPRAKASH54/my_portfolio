@@ -343,4 +343,14 @@
   .floatingChip {
     display: none !important;
   }
+
+  .backgroundVideoVisible {
+    opacity: 0.08 !important; /* Subdued ambient video opacity on mobile for deep midnight blacks */
+  }
+  
+  .overlayMask {
+    background: 
+      linear-gradient(180deg, rgba(7, 17, 31, 0.75) 0%, rgba(7, 17, 31, 0.98) 100%),
+      radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.04) 0%, rgba(7, 17, 31, 0.98) 100%) !important;
+  }
 }
