@@ -73,7 +73,7 @@ export default function CinematicLayer() {
       // Wide volume distribution
       positionsA[i * 3] = (Math.random() - 0.5) * 35;
       positionsA[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positionsA[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      positionsA[i * 3 + 2] = -15 + Math.random() * 15; // Restrict z range so particles never drift too close to the camera lens (prevents huge blurry blobs)
 
       speedsA[i] = 0.05 + Math.random() * 0.08;
       offsetsA[i * 3] = Math.random() * Math.PI * 2;
@@ -113,7 +113,7 @@ export default function CinematicLayer() {
     for (let i = 0; i < particleCountB; i++) {
       positionsB[i * 3] = (Math.random() - 0.5) * 40;
       positionsB[i * 3 + 1] = (Math.random() - 0.5) * 25;
-      positionsB[i * 3 + 2] = (Math.random() - 0.5) * 15;
+      positionsB[i * 3 + 2] = -10 + Math.random() * 10; // Restrict z range for sparkles to maintain crisp, small embers in the background
 
       speedsB[i] = 0.08 + Math.random() * 0.12;
       offsetsB[i * 2] = Math.random() * Math.PI * 2;

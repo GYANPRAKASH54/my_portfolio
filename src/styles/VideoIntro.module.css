@@ -347,8 +347,8 @@
     display: none !important;
   }
 
-  .backgroundVideoVisible {
-    opacity: 0.08 !important; /* Subdued ambient video opacity on mobile for deep midnight blacks */
+  .backgroundVideoContainer {
+    display: none !important; /* Completely disable background video on mobile for optimal GPU performance and sharpness (prevents mobile filter blur bugs!) */
   }
   
   .overlayMask {
