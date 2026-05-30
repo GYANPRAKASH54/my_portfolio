@@ -73,6 +73,12 @@ html, body {
   animation: grainAnimation 0.8s steps(10) infinite;
 }
 
+@media (max-width: 1024px) {
+  .film-grain {
+    display: none !important; /* Disable resource-heavy animated film grain on mobile to restore subpixel font anti-aliasing and prevent general viewport blur */
+  }
+}
+
 @keyframes grainAnimation {
   0%, 100% { transform: translate(0, 0); }
   10% { transform: translate(-5%, -10%); }

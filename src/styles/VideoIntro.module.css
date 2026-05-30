@@ -333,6 +333,9 @@
     aspect-ratio: 0.85 / 1; /* Maintain gorgeous portrait card aspect ratio on mobile */
     max-width: 320px;       /* Clamp width so the card looks sleek and doesn't stretch too large */
     margin: 0 auto;        /* Center card on mobile viewports */
+    backdrop-filter: none !important; /* Disable expensive blurs on mobile which can trigger browser anti-aliasing bugs blurring the card and video */
+    -webkit-backdrop-filter: none !important;
+    background: rgba(11, 30, 53, 0.75) !important; /* Solid fallback glass background */
   }
   
   .scrollIndicator {
