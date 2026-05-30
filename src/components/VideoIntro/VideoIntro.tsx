@@ -29,6 +29,7 @@ export default function VideoIntro() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showHint, setShowHint] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // Smooth transition fade-in triggers on mount
@@ -49,12 +50,19 @@ export default function VideoIntro() {
       setScrollProgress(progress);
     };
 
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    checkMobile();
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", checkMobile);
 
     return () => {
       clearTimeout(timer);
       clearTimeout(hintTimer);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
     };
   }, []);
 
@@ -203,8 +211,8 @@ export default function VideoIntro() {
             className={styles.leftContent}
             id="hero-text-content-wrapper"
             style={{
-              transform: `translateY(${-scrollProgress * 50}px)`,
-              opacity: 1 - scrollProgress * 0.9,
+              transform: isMobile ? "none" : `translateY(${-scrollProgress * 50}px)`,
+              opacity: isMobile ? 1 : 1 - scrollProgress * 0.9,
             }}
           >
             <HeroContent />
@@ -233,8 +241,8 @@ export default function VideoIntro() {
               }`} 
               id="cinematic-video-card"
               style={{
-                transform: `translateY(0px) scale(${1 - scrollProgress * 0.08})`,
-                opacity: 1 - scrollProgress * 0.8,
+                transform: isMobile ? "none" : `translateY(0px) scale(${1 - scrollProgress * 0.08})`,
+                opacity: isMobile ? 1 : 1 - scrollProgress * 0.8,
               }}
             >
               <video

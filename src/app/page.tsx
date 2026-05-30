@@ -24,8 +24,7 @@ export default function Home() {
       <section 
         style={{ 
           position: "relative", 
-          width: "100vw", 
-          height: "100vh", 
+          width: "100%", 
           overflow: "hidden" 
         }} 
         id="hero-cinematic-section"

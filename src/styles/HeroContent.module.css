@@ -52,7 +52,7 @@
   font-size: 0.85rem;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--color-muted-gray);
+  color: rgba(234, 244, 255, 0.75); /* High-contrast alpha frost-white for premium legibility */
   max-width: 600px;
   margin-bottom: 14px;
   opacity: 0; /* Animated */
@@ -108,7 +108,8 @@
   
   .tagline {
     font-size: 0.65rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
+    line-height: 1.5; /* Proper vertical wrap spacing for long mobile taglines */
     margin-bottom: 14px;
   }
   
