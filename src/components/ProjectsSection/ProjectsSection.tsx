@@ -148,6 +148,7 @@ export default function ProjectsSection() {
                         <ExternalLink size={12} />
                       </a>
                     )}
+                    {project.codeLink && (
                       <a
                         href={project.codeLink}
                         target="_blank"
@@ -160,6 +161,7 @@ export default function ProjectsSection() {
                         </svg>
                         <span>Source Code</span>
                       </a>
+                    )}
                   </div>
                 </div>
 
