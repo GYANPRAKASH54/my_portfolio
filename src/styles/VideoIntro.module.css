@@ -357,3 +357,60 @@
       radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.04) 0%, rgba(7, 17, 31, 0.98) 100%) !important;
   }
 }
+
+/* Dedicated Mobile Optimizations (Screens under 768px) */
+@media (max-width: 768px) {
+  .heroContainer {
+    height: auto !important;
+    min-height: 100svh !important; /* Leverage svh to avoid address bar overlay jumps */
+    overflow: visible !important;   /* Fix mobile overflow clipping */
+    padding-top: 110px !important;  /* Avoid sticky navbar overlap */
+    padding-bottom: 40px !important;
+  }
+  
+  .contentOverlay {
+    position: relative !important;
+    height: auto !important;
+    padding: 0 16px !important;
+    overflow: visible !important;
+    z-index: 15 !important;
+  }
+  
+  .heroSplitWrapper {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+  }
+  
+  .rightVideoSide {
+    justify-content: center !important;
+    width: 100% !important;
+    display: flex !important;
+    position: relative !important;
+  }
+  
+  .videoCardWrapper {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 16px auto 0 auto !important; /* Stack vertically with compact spacing */
+    aspect-ratio: 0.85 / 1 !important;
+    transform: none !important; /* Disable all scale/translate active transforms */
+    backdrop-filter: none !important; /* Disable resource-heavy blur filters on mobile */
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important; /* Reduced shadow to optimize rendering */
+    background: rgba(11, 30, 53, 0.85) !important; /* Solid glass fallback to prevent pixel bleeds */
+    border: 1px solid rgba(125, 211, 252, 0.1) !important;
+  }
+
+  .videoCardControls, .soundBadge {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Simplify ambient effects to maximize performance on mobile devices */
+  .overlayMask {
+    background: linear-gradient(180deg, rgba(7, 17, 31, 0.8) 0%, rgba(7, 17, 31, 0.98) 100%) !important;
+  }
+}

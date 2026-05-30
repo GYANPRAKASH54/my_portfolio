@@ -101,30 +101,44 @@
 }
 
 @media (max-width: 768px) {
+  .heroOverlay {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
   .mainTitleAccent {
-    font-size: 3.6rem;
-    letter-spacing: 0.02em;
+    font-size: 3.2rem !important;
+    letter-spacing: 0.02em !important;
+    text-align: center !important;
+    line-height: 1.0 !important;
   }
   
   .tagline {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    line-height: 1.5; /* Proper vertical wrap spacing for long mobile taglines */
-    margin-bottom: 14px;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.16em !important;
+    line-height: 1.4 !important; /* Proper vertical wrap spacing for long mobile taglines */
+    margin: 0 auto 16px auto !important;
+    text-align: center !important;
   }
   
   .subtitle {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 0.8rem !important;
+    line-height: 1.55 !important;
+    margin: 0 auto 14px auto !important;
+    text-align: center !important;
+    max-width: 100% !important;
   }
   
   .techPillsWrapper {
-    gap: 6px 8px;
+    gap: 6px 8px !important;
+    justify-content: center !important;
+    margin: 4px auto 0 auto !important;
+    max-width: 100% !important;
   }
   
   .techPill {
-    font-size: 0.65rem;
-    padding: 5px 12px;
+    font-size: 0.65rem !important;
+    padding: 5px 12px !important;
   }
 }

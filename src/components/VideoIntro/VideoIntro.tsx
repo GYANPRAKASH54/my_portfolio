@@ -92,8 +92,7 @@ export default function VideoIntro() {
   // 1. GSAP Timelines for Cinematic Camera Drift & Floating Chips
   useEffect(() => {
     if (!isLoaded) return;
-
-    // Ultra-subtle continuous camera drift on video card (breathing motion loop)
+    if (isMobile) return; // Completely disable continuous CPU/GPU intensive floating drift loops on mobile
     const cardDrift = gsap.to(`#cinematic-video-card`, {
       y: -8,
       x: 5,

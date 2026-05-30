@@ -27,23 +27,28 @@ export default function HeroContent() {
     if (!containerRef.current) return;
 
     const subtitles = containerRef.current.querySelectorAll(`.${styles.subtitle}`);
+    
+    // Mobile optimization: simplify transitions on smaller screens
+    const isMobile = window.innerWidth < 768;
+    const translateY = isMobile ? 10 : 30; 
+    const duration = isMobile ? 0.45 : 0.8;
 
     // Pre-set layouts for smooth entry transitions
     gsap.set([taglineRef.current, headingRef.current, pillsRef.current], {
-      y: 30,
+      y: translateY,
       opacity: 0,
     });
     gsap.set(subtitles, {
-      y: 20,
+      y: isMobile ? 8 : 20,
       opacity: 0,
     });
 
-    const tl = gsap.timeline({ delay: 0.8 });
+    const tl = gsap.timeline({ delay: isMobile ? 0.2 : 0.8 });
 
     tl.to(taglineRef.current, {
       y: 0,
       opacity: 1,
-      duration: 0.8,
+      duration: duration,
       ease: "power3.out",
     })
       .to(
@@ -51,31 +56,31 @@ export default function HeroContent() {
         {
           y: 0,
           opacity: 1,
-          duration: 1.0,
+          duration: isMobile ? 0.55 : 1.0,
           ease: "power3.out",
         },
-        "-=0.5"
+        isMobile ? "-=0.25" : "-=0.5"
       )
       .to(
         subtitles,
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
-          stagger: 0.25, // Stagger paragraphs seamlessly
+          duration: duration,
+          stagger: isMobile ? 0.12 : 0.25, // Stagger paragraphs seamlessly
           ease: "power3.out",
         },
-        "-=0.6"
+        isMobile ? "-=0.3" : "-=0.6"
       )
       .to(
         pillsRef.current,
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: duration,
           ease: "power2.out",
         },
-        "-=0.4"
+        isMobile ? "-=0.2" : "-=0.4"
       );
 
     return () => {
